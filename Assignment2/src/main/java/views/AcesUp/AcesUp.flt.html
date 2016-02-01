@@ -126,30 +126,46 @@
 <script>
 
 var game;
-
+var size_0_0;
+var size_1_1;
+var size_2_2;
+var size_3_3;
+var size_0;
+var size_1;
+var size_2;
+var size_3;
 function display(game) {
-console.log(game);
-
-$( '.columnOfCards .cardLocation' ).html("");
-
-    $.each(game.cols[0], function( key, val ) {
-        $( '#c0 .l'+key ).prepend('<img class="card" src=" assets/images/'+val.suit+ '/'+val.value+'.jpg" />')
-    });
-
- $.each(game.cols[1], function( key, val ) {
-        $( '#c1 .l'+key ).prepend('<img class="card" src=" assets/images/'+val.suit+ '/'+val.value+'.jpg" />')
-    });
-
- $.each(game.cols[2], function( key, val ) {
-        $( '#c2 .l'+key ).prepend('<img class="card" src=" assets/images/'+val.suit+ '/'+val.value+'.jpg" />')
-    });
-
- $.each(game.cols[3], function( key, val ) {
-        $( '#c3 .l'+key ).prepend('<img class="card" src=" assets/images/'+val.suit+ '/'+val.value+'.jpg" />')
-    });
-
-
-
+	size_0_0=0;
+	size_1_1=0;
+	size_2_2=0;
+	size_3_3=0;
+	console.log(game);
+	$( '.columnOfCards .cardLocation' ).html("");
+		$.each(game.cols[0], function( key, val ) {
+			$( '#c0 .l'+key ).prepend('<img class="card" src=" assets/images/'+val.suit+ '/'+val.value+'.jpg" />')
+			size_0_0=size_0_0+1;
+		});
+	 $.each(game.cols[1], function( key, val ) {
+			$( '#c1 .l'+key ).prepend('<img class="card" src=" assets/images/'+val.suit+ '/'+val.value+'.jpg" />')
+			size_1_1=size_1_1+1;
+		});
+		
+	 $.each(game.cols[2], function( key, val ) {
+			$( '#c2 .l'+key ).prepend('<img class="card" src=" assets/images/'+val.suit+ '/'+val.value+'.jpg" />')
+			size_2_2=size_2_2+1;
+		});
+		
+	 $.each(game.cols[3], function( key, val ) {
+			$( '#c3 .l'+key ).prepend('<img class="card" src=" assets/images/'+val.suit+ '/'+val.value+'.jpg" />')
+			size_3_3=size_3_3+1;
+		});
+	if (size_0 == size_0_0 && size_1==size_1_1 && size_2==size_2_2 && size_3==size_3_3){
+		alert ("remove failed");
+	}
+	size_0=size_0_0;
+	size_1=size_1_1;
+	size_2=size_2_2;
+	size_3=size_3_3;
 }
 
 $.getJSON("http://localhost:8080/game", function( data ) {
@@ -205,8 +221,8 @@ $("#Remove4").click(function(){
 
 
 $("#moveButton").click(function(){
-var colFrom = $("#from_col").val();
-var colTo = $("#to_col").val();
+var colFrom = $("#from_col").val() -1;
+var colTo = $("#to_col").val() -1;
 $.ajax({
   type: "POST",
   url: "/moveCard/"+colFrom+"/"+colTo,
