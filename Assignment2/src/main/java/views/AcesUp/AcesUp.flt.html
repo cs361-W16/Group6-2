@@ -115,7 +115,8 @@
 <button id="Remove3">Remove</button><button id="Remove4">Remove</button>-->
 
 <p id="sbmove"><BR>Move from column <input type="text" id="from_col" size="4" /> to <input type="text" id="to_col" size="4" /> 
-<button class="myButton" id="moveButton">Move</button> </p>
+<button class="myButton" id="moveButton">Move</button> <button class="myButton" id="flesh" onclick="fresh()">Play again</button></p>
+
 
 <!--<button id="dealButton">Deal</button>-->
 
@@ -331,6 +332,12 @@ for (i=0;i<=snowmax;i++) {
 if (browserok) {
 	window.onload=initsnow
 }
+</script>
+
+<script>
+    function fresh ( ) {
+		location.reload();
+	}
 </script>
 
 
