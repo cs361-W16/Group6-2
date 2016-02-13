@@ -26,7 +26,7 @@ public class testGame {
     public void testGameInit(){
         Game g = new Game();
         g.buildDeck();
-        g.shuffle();
+       // g.shuffle();
         assertNotEquals(2,g.deck.get(0).getValue());
     }
 
@@ -34,12 +34,37 @@ public class testGame {
     public void testGameStart(){
         Game g = new Game();
         g.buildDeck();
+        assertEquals(52,g.deck_count);
         g.shuffle();
         g.dealFour();
         assertEquals(1,g.cols.get(0).size());
         assertEquals(1,g.cols.get(1).size());
         assertEquals(1,g.cols.get(2).size());
         assertEquals(1,g.cols.get(3).size());
+    }
+    @Test
+    public void testGameStart1(){
+        US s = new US();
+        s.buildDeck();
+        assertEquals(52,s.deck_count);
+        s.shuffle();
+        s.dealFour();
+        assertEquals(1,s.cols.get(0).size());
+        assertEquals(1,s.cols.get(1).size());
+        assertEquals(1,s.cols.get(2).size());
+        assertEquals(1,s.cols.get(3).size());
+    }
+    @Test
+    public void testGameStart2(){
+        SP s1 = new SP();
+        s1.buildDeck();
+        assertEquals(40,s1.deck_count);
+        s1.shuffle();
+        s1.dealFour();
+        assertEquals(1,s1.cols.get(0).size());
+        assertEquals(1,s1.cols.get(1).size());
+        assertEquals(1,s1.cols.get(2).size());
+        assertEquals(1,s1.cols.get(3).size());
     }
 
     @Test
@@ -61,7 +86,6 @@ public class testGame {
         g.remove(2);
         assertEquals(0,g.cols.get(2).size());
     }
-
 
 
 }
