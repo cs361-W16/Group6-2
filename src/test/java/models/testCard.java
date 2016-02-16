@@ -59,11 +59,11 @@ public class testCard {
         SP s1 = new SP();
         s1.buildDeck1();
         s1.customDeal(0,3,6,9);
+        s1.remove(2);
+        assertEquals(0,s1.cols.get(2).size());
         s1.move(0,2);
         assertEquals(1,s1.cols.get(2).size());
         assertEquals(0,s1.cols.get(0).size());
-        s1.remove(2);
-        assertEquals(0,s1.cols.get(2).size());
 
     }
 
