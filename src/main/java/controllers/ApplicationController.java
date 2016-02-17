@@ -17,6 +17,8 @@
 package controllers;
 
 import models.Game;
+import models.US;
+import models.SP;
 import ninja.Context;
 import ninja.Result;
 import ninja.Results;
@@ -44,6 +46,25 @@ public class ApplicationController {
 
         return Results.json().render(g);
     }
+    //gameget for US ACEUP
+    public Result gameGet1(){
+        US s = new US();
+        s.buildDeck2();
+        s.shuffle();
+        s.dealFour();
+
+        return Results.json().render(s);
+    }
+
+    //gameget for SP ACEUP
+    public Result gameGet2(){
+        SP s1 = new SP();
+        s1.buildDeck1();
+        s1.shuffle();
+        s1.dealFour();
+
+        return Results.json().render(s1);
+    }
 
     public Result dealPost(Context context, Game g) {
         if(context.getRequestPath().contains("deal")){
@@ -52,14 +73,50 @@ public class ApplicationController {
         return Results.json().render(g);
     }
 
+    //dealPost for US ACEUP
+    public Result dealPost1(Context context, US s) {
+        if(context.getRequestPath().contains("deal")){
+            s.dealFour();
+        }
+        return Results.json().render(s);
+    }
+
+    //dealPost for SP ACEUP
+    public Result dealPost2(Context context, SP s1) {
+        if(context.getRequestPath().contains("deal")){
+            s1.dealFour();
+        }
+        return Results.json().render(s1);
+    }
+
     public Result removeCard(Context context, @PathParam("column") int colNumber, Game g){
         g.remove(colNumber);
         return  Results.json().render(g);
     }
 
+    public Result removeCard1(Context context, @PathParam("column") int colNumber, US s){
+        s.remove(colNumber);
+        return  Results.json().render(s);
+    }
+
+    public Result removeCard2(Context context, @PathParam("column") int colNumber, SP s1){
+        s1.remove(colNumber);
+        return  Results.json().render(s1);
+    }
+
     public Result moveCard(Context context, @PathParam("columnFrom") int colFrom, @PathParam("columnTo") int colTo, Game g){
         g.move(colFrom,colTo);
         return  Results.json().render(g);
+    }
+
+    public Result moveCard1(Context context, @PathParam("columnFrom") int colFrom, @PathParam("columnTo") int colTo, US s){
+        s.move(colFrom,colTo);
+        return  Results.json().render(s);
+    }
+
+    public Result moveCard2(Context context, @PathParam("columnFrom") int colFrom, @PathParam("columnTo") int colTo, SP s1){
+        s1.move(colFrom,colTo);
+        return  Results.json().render(s1);
     }
 
 }
