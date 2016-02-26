@@ -34,10 +34,18 @@ public class ApplicationController {
         return Results.html();
     }
 
+    public Result choose() {
+        return Results.html().template("views/AcesUp/index.html");
+    }
+
     public Result acesUp() {
         return Results.html().template("views/AcesUp/AcesUp.flt.html");
     }
-    
+
+    public Result acesUp1() {
+        return Results.html().template("views/AcesUp/AcesUp_spanish.flt.html");
+    }
+
     public Result gameGet(){
         Game g = new Game();
         g.buildDeck();

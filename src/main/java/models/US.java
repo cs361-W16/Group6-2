@@ -5,7 +5,7 @@ package models;
  */
 public class US extends Game{
     public void buildDeck2() {
-        for(int i = 1; i < 14; i++){
+        for(int i = 2; i < 15; i++){
             deck.add(new Card(i,Suit.Clubs));
             deck.add(new Card(i,Suit.Hearts));
             deck.add(new Card(i,Suit.Diamonds));

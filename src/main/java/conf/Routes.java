@@ -25,23 +25,29 @@ import controllers.ApplicationController;
 public class Routes implements ApplicationRoutes {
 
     @Override
-    public void init(Router router) {  
-        
+    public void init(Router router) {
+
         router.GET().route("/").with(ApplicationController.class, "index");
+        router.GET().route("/choose").with(ApplicationController.class, "choose");
 //        router.GET().route("/hello_world.json").with(ApplicationController.class, "helloWorldJson");
         router.GET().route("/AcesUp").with(ApplicationController.class, "acesUp");
+        router.GET().route("/AcesUp1").with(ApplicationController.class, "acesUp1");
+        router.GET().route("/game1").with(ApplicationController.class, "gameGet1");
+        router.GET().route("/game2").with(ApplicationController.class, "gameGet2");
 
-        router.GET().route("/game").with(ApplicationController.class, "gameGet");
-        router.POST().route("/dealGame").with(ApplicationController.class, "dealPost");
+        router.POST().route("/dealGame1").with(ApplicationController.class, "dealPost1");
+        router.POST().route("/dealGame2").with(ApplicationController.class, "dealPost2");
         router.POST().route("/moveCard/{columnFrom}/{columnTo}").with(ApplicationController.class, "moveCard");
-        router.POST().route("/removeCard/{column}").with(ApplicationController.class, "removeCard");
-
+        router.POST().route("/moveCard1/{columnFrom}/{columnTo}").with(ApplicationController.class, "moveCard1");
+        router.POST().route("/moveCard2/{columnFrom}/{columnTo}").with(ApplicationController.class, "moveCard2");
+        router.POST().route("/removeCard1/{column}").with(ApplicationController.class, "removeCard1");
+        router.POST().route("/removeCard2/{column}").with(ApplicationController.class, "removeCard2");
         ///////////////////////////////////////////////////////////////////////
         // Assets (pictures / javascript)
         ///////////////////////////////////////////////////////////////////////    
         router.GET().route("/assets/webjars/{fileName: .*}").with(AssetsController.class, "serveWebJars");
         router.GET().route("/assets/{fileName: .*}").with(AssetsController.class, "serveStatic");
-        
+
         ///////////////////////////////////////////////////////////////////////
         // Index / Catchall shows index page
         ///////////////////////////////////////////////////////////////////////

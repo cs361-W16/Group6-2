@@ -1,6 +1,8 @@
 controllers\ApplicationController.class
 conf\Routes.class
-models\Suit.class
+models\US.class
 models\Card.class
 conf\Module.class
 models\Game.class
+models\SP.class
+models\Suit.class
